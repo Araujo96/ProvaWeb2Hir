@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Produtos!</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div th:replace="fragments/commons :: header"></div>
+<div class="container">
+    <div class="row">
+
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Cadastrar Jogo Tabuleiro</h1>
+                    <form id="form-contato" method="post" th:object="${jogot}" th:action="@{/salvar}" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Nome:</label>
+                            <input class="form-control" type="text" name="nome"th:field="*{nome}" placeholder="Digite Nome do Jogo">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantidade Jogadores:</label>
+                            <input class="form-control" type="text" name="qtjodaores"th:field="*{qtjodaores}" placeholder="Digite a Quantidade de Jogadores...">
+                            <p th:if="${#fields.hasErrors('qtjodaores')}" th:errors="*{qtjodaores}"> </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Classificação:</label>
+                            <input class="form-control" type="text" name="classificacao" th:field="*{classificacao}" placeholder="Jovem,Adulto,Criança"></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Preço:</label>
+                            <input class="form-control" type="number" name="preco" th:field="*{preco}"placeholder="Digite o Preço do jogo"></input>
+                            <p th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"> </p>
+                        </div>
+                       <div class="form-group">
+                            <label>Imagem:</label>
+                            <input class="form-control" type="file" name="file"></input>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary">ENVIAR</button>
+                        </div>
+                        <div class="alert alert-danger d-none">
+                            Preencha o campo <span id="campo-erro"></span>!
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/commons :: footer"></div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>

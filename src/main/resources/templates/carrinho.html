@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/d20.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div th:replace="fragments/commons :: header"></div>
+<table class="table" border="4">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Imagem</th>
+        <th scope="col">ID</th>
+        <th scope="col">NOME</th>
+        <th scope="col">QUANTIDADE DE JOGADORES</th>
+        <th scope="col">Classificação</th>
+        <th scope="col">Preço</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="Lista :${session.carrinho}">
+        <td><img width="100px" th:src="@{'/images/' + ${Lista.getImagemUri()}}" alt="imagem"/></td>
+        <td th:text="${Lista.id}">Id</td>
+        <td th:text="${Lista.nome}">Nome</td>
+        <td th:text="${Lista.qtjodaores}">Quantidade Jogadores</td>
+        <td th:text="${Lista.classificacao}">Classificação</td>
+        <td th:text="${Lista.preco}">Preço</td>
+
+    </tbody>
+</table>
+<a class="btn btn-dark" th:href="@{'/finalizarcompras/'}">FinalizarCompras </a>
+<div th:replace="fragments/commons :: footer"></div>
+</body>
+</html>
